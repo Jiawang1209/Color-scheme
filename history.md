@@ -34,3 +34,4 @@
 | 23:25 | deterministic Voronoi region geometry (lib/map/regions) | `1fd2f23` |
 | 23:25 | scalar field → palette class assignment (lib/map/field) | `b186785` |
 | 23:28 | abstract choropleth map preview + preview switch (MapPreview/PreviewSwitch) | `fc3c7e7` |
+| 23:33 | color picker view: spectrum + eyedropper + nearest library color (views/PickerView) | `184d904` |
