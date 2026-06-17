@@ -25,3 +25,4 @@
 | 22:24 | assemble App: three-column layout + URL sync + styling | `98bb9b7` |
 | 22:34 | expand palette library to 54 schemes (full ColorBrewer set + more viridis/crameri/journal) | `7dc2dff` |
 | 22:41 | GitHub Pages deploy config (vite base + Actions workflow + README) | `f8881bc` |
+| 23:08 | tools expansion plan: map preview + 取色器 + 图片取色 | `6036819` |
