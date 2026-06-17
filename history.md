@@ -37,3 +37,9 @@
 | 23:33 | color picker view: spectrum + eyedropper + nearest library color (views/PickerView) | `184d904` |
 | 23:37 | image color extraction view: upload → median-cut → nearest palette (views/ImageView) | `6ef5f42` |
 | 23:40 | polish app shell nav + tabs + view styling (styles.css) | `ee30062` |
+
+## 2026-06-18
+
+| 时间 | 改动 / 功能 | commit |
+|------|-------------|--------|
+| 00:04 | real-map + 学术风重塑 计划 | `1344676` |
