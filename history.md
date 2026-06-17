@@ -44,3 +44,4 @@
 |------|-------------|--------|
 | 00:04 | real-map + 学术风重塑 计划 | `1344676` |
 | 00:06 | world geo features from topojson (lib/map/geo) | `f827dbf` |
+| 00:08 | real geographic world choropleth map preview (MapPreview + d3-geo) | `ec3b80a` |
