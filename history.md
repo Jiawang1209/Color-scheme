@@ -35,3 +35,4 @@
 | 23:25 | scalar field → palette class assignment (lib/map/field) | `b186785` |
 | 23:28 | abstract choropleth map preview + preview switch (MapPreview/PreviewSwitch) | `fc3c7e7` |
 | 23:33 | color picker view: spectrum + eyedropper + nearest library color (views/PickerView) | `184d904` |
+| 23:37 | image color extraction view: upload → median-cut → nearest palette (views/ImageView) | `6ef5f42` |
