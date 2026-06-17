@@ -43,6 +43,69 @@ body {
   min-height: 100vh;
 }
 
+/* ── App shell ── */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+/* ── App nav (top bar) ── */
+.app-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: var(--header-h);
+  padding: 0 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* .app-title already defined below — no duplicate */
+
+/* ── App-level tab group ── */
+.app-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.app-tab {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 120ms, color 120ms, border-color 120ms;
+}
+
+.app-tab:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.app-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ── Map preview SVG ── */
+.map-preview {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+}
+
 /* ── Header ── */
 .app-header {
   position: sticky;
