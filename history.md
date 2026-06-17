@@ -20,3 +20,4 @@
 | 17:05 | CVD color-blindness simulation (lib/color/cvd) | `78a49e9` |
 | 17:09 | palette registry + getColors + 4 collections (data layer) | `6e90c5b` |
 | 22:11 | export code generators, 6 formats (lib/export) | `bc6d9f2` |
+| 22:14 | URL <-> AppState encode/decode (state + lib/url) | `b37055d` |
