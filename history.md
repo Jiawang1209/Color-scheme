@@ -31,3 +31,4 @@
 | 23:14 | nearest scientific palette for a color set (lib/color/nearest) | `550b26d` |
 | 23:17 | median-cut dominant color extraction (lib/color/extract) | `97a4b3c` |
 | 23:21 | app shell + 3 tabs + LibraryView extraction (App/AppTabs/views) | `b941fc1` |
+| 23:25 | deterministic Voronoi region geometry (lib/map/regions) | `1fd2f23` |
