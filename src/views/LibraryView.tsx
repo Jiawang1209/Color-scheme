@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { MapPreview } from '../components/MapPreview';
+import { PreviewSwitch } from '../components/PreviewSwitch';
 import type { AppState } from '../state/types';
 import type { Palette } from '../data/types';
 import { decodeState, encodeState } from '../lib/url/state';
@@ -25,6 +27,7 @@ export function LibraryView() {
   );
   const [query, setQuery] = useState('');
   const [safety, setSafety] = useState<SafetyValue>({ cb: false, print: false, grey: false });
+  const [preview, setPreview] = useState<'map' | 'chart'>('map');
 
   useEffect(() => {
     const p = new URLSearchParams(encodeState(state));
@@ -111,8 +114,11 @@ export function LibraryView() {
               <div className="center-strip">
                 <SwatchStrip colors={colors} cvd={state.cvd} />
               </div>
+              <PreviewSwitch value={preview} onChange={setPreview} />
               <div className="center-preview">
-                <PreviewFigure colors={colors} cvd={state.cvd} type={state.type} />
+                {preview === 'map'
+                  ? <MapPreview colors={colors} cvd={state.cvd} type={state.type} />
+                  : <PreviewFigure colors={colors} cvd={state.cvd} type={state.type} />}
               </div>
             </>
           ) : (
