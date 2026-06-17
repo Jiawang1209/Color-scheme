@@ -29,3 +29,21 @@ export function nearestPaletteColor(target: string): NearestColor {
   }
   return best;
 }
+
+export interface NearestPalette { paletteId: string; score: number; }
+
+export function nearestPalette(colors: string[], n = 7): NearestPalette {
+  let best: NearestPalette = { paletteId: '', score: Infinity };
+  for (const p of palettes) {
+    const swatches = getColors(p.id, n);
+    let total = 0;
+    for (const c of colors) {
+      let min = Infinity;
+      for (const s of swatches) min = Math.min(min, colorDistance(c, s));
+      total += min;
+    }
+    const score = total / colors.length;
+    if (score < best.score) best = { paletteId: p.id, score };
+  }
+  return best;
+}
