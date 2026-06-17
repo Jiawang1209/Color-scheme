@@ -30,3 +30,4 @@
 | 23:13 | perceptual distance + nearest palette color (lib/color/nearest) | `3a5480f` |
 | 23:14 | nearest scientific palette for a color set (lib/color/nearest) | `550b26d` |
 | 23:17 | median-cut dominant color extraction (lib/color/extract) | `97a4b3c` |
+| 23:21 | app shell + 3 tabs + LibraryView extraction (App/AppTabs/views) | `b941fc1` |
