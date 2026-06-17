@@ -116,9 +116,31 @@ export function LibraryView() {
               </div>
               <PreviewSwitch value={preview} onChange={setPreview} />
               <div className="center-preview">
-                {preview === 'map'
-                  ? <MapPreview colors={colors} cvd={state.cvd} type={state.type} />
-                  : <PreviewFigure colors={colors} cvd={state.cvd} type={state.type} />}
+                {preview === 'map' ? (
+                  <div className="map-figure">
+                    <MapPreview colors={colors} cvd={state.cvd} type={state.type} />
+                    {colors.length > 0 && (
+                      <div className="map-legend" aria-label="颜色图例">
+                        <div className="map-legend-bar">
+                          {colors.map((c, i) => (
+                            <div
+                              key={i}
+                              className="map-legend-segment"
+                              style={{ background: c }}
+                            />
+                          ))}
+                        </div>
+                        <div className="map-legend-ticks">
+                          <span className="map-legend-tick">低</span>
+                          <span className="map-legend-caption">图例</span>
+                          <span className="map-legend-tick">高</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <PreviewFigure colors={colors} cvd={state.cvd} type={state.type} />
+                )}
               </div>
             </>
           ) : (
