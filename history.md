@@ -13,3 +13,4 @@
 | 时间 | 改动 / 功能 | commit |
 |------|-------------|--------|
 | 16:52 | 建立设计 spec、实现 plan，确立 history.md 开发硬约束 | `a1914dd` |
+| 16:57 | scaffold Vite+React+TS+Vitest project | `9e137e0` |
