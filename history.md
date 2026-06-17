@@ -22,3 +22,4 @@
 | 22:11 | export code generators, 6 formats (lib/export) | `bc6d9f2` |
 | 22:14 | URL <-> AppState encode/decode (state + lib/url) | `b37055d` |
 | 22:19 | 9 presentational components + smoke tests (components) | `2a43c7c` |
+| 22:24 | assemble App: three-column layout + URL sync + styling | `98bb9b7` |
