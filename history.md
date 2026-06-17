@@ -16,3 +16,4 @@
 | 16:57 | scaffold Vite+React+TS+Vitest project | `9e137e0` |
 | 16:59 | restore untracked 设计草案 + track lockfile（脚手架误删后恢复） | `00ef459` |
 | 17:01 | hex/rgb conversion helpers (lib/color/convert) | `0449504` |
+| 17:03 | continuous colormap sampling in Lab (lib/color/sample) | `32c1855` |
