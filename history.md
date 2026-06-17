@@ -23,3 +23,4 @@
 | 22:14 | URL <-> AppState encode/decode (state + lib/url) | `b37055d` |
 | 22:19 | 9 presentational components + smoke tests (components) | `2a43c7c` |
 | 22:24 | assemble App: three-column layout + URL sync + styling | `98bb9b7` |
+| 22:34 | expand palette library to 54 schemes (full ColorBrewer set + more viridis/crameri/journal) | `7dc2dff` |
