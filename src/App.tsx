@@ -1,122 +1,137 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState, useEffect } from 'react';
+import type { AppState } from './state/types';
+import type { Palette } from './data/types';
+import { decodeState, encodeState } from './lib/url/state';
+import { palettes, getColors } from './data/index';
+import { SwatchStrip } from './components/SwatchStrip';
+import { TypeTabs } from './components/TypeTabs';
+import { CvdToggle } from './components/CvdToggle';
+import { NSelector } from './components/NSelector';
+import { CollectionFilter } from './components/CollectionFilter';
+import { SafetyFilter } from './components/SafetyFilter';
+import { PaletteList } from './components/PaletteList';
+import { ExportPanel } from './components/ExportPanel';
+import { PreviewFigure } from './components/PreviewFigure';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+interface SafetyValue {
+  cb: boolean;
+  print: boolean;
+  grey: boolean;
 }
 
-export default App
+function App() {
+  const [state, setState] = useState<AppState>(() =>
+    decodeState(window.location.search.slice(1))
+  );
+  const [query, setQuery] = useState('');
+  const [safety, setSafety] = useState<SafetyValue>({ cb: false, print: false, grey: false });
+
+  useEffect(() => {
+    history.replaceState(null, '', '?' + encodeState(state));
+  }, [state]);
+
+  const update = (patch: Partial<AppState>) => setState((s) => ({ ...s, ...patch }));
+
+  const passesSafety = (p: Palette) =>
+    (!safety.cb || p.meta.colorblindSafe !== false) &&
+    (!safety.print || p.meta.printFriendly) &&
+    (!safety.grey || p.meta.photocopySafe);
+
+  const visible = palettes
+    .filter((p) => p.type === state.type)
+    .filter((p) => state.collections.includes(p.collection))
+    .filter(passesSafety)
+    .filter((p) => p.name.toLowerCase().includes(query.toLowerCase()));
+
+  const current = visible.find((p) => p.id === state.paletteId) ?? visible[0];
+  const colors = current ? getColors(current.id, state.n) : [];
+
+  return (
+    <div className="app">
+      <header className="app-header">
+        <div className="header-left">
+          <span className="app-title">SciColor</span>
+          <TypeTabs value={state.type} onChange={(type) => update({ type })} />
+        </div>
+        <div className="header-center">
+          <input
+            className="search-input"
+            type="search"
+            placeholder="搜索配色方案…"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            aria-label="搜索配色方案"
+          />
+        </div>
+        <div className="header-right">
+          <CvdToggle value={state.cvd} onChange={(cvd) => update({ cvd })} />
+        </div>
+      </header>
+
+      <main className="layout">
+        <aside className="sidebar">
+          <section className="sidebar-section">
+            <h3 className="sidebar-label">色阶数</h3>
+            <NSelector value={state.n} onChange={(n) => update({ n })} />
+          </section>
+          <section className="sidebar-section">
+            <h3 className="sidebar-label">数据集</h3>
+            <CollectionFilter
+              value={state.collections}
+              onChange={(collections) => update({ collections })}
+            />
+          </section>
+          <section className="sidebar-section">
+            <h3 className="sidebar-label">可用性筛选</h3>
+            <SafetyFilter value={safety} onChange={setSafety} />
+          </section>
+          <section className="sidebar-section palette-list-section">
+            <h3 className="sidebar-label">配色方案 ({visible.length})</h3>
+            <PaletteList
+              palettes={visible}
+              selectedId={current?.id ?? ''}
+              n={state.n}
+              cvd={state.cvd}
+              onSelect={(paletteId) => update({ paletteId })}
+            />
+          </section>
+        </aside>
+
+        <section className="center-panel">
+          {current ? (
+            <>
+              <div className="center-palette-header">
+                <h2 className="palette-title">{current.name}</h2>
+                <span className="palette-meta">
+                  {current.collection} · {state.n} 色
+                </span>
+              </div>
+              <div className="center-strip">
+                <SwatchStrip colors={colors} cvd={state.cvd} />
+              </div>
+              <div className="center-preview">
+                <PreviewFigure colors={colors} cvd={state.cvd} type={state.type} />
+              </div>
+            </>
+          ) : (
+            <div className="empty-state">
+              <p>无匹配配色</p>
+              <p className="empty-hint">请调整筛选条件</p>
+            </div>
+          )}
+        </section>
+
+        <aside className="export-sidebar">
+          <ExportPanel
+            format={state.exportFormat}
+            colors={colors}
+            name={current?.id ?? 'palette'}
+            onFormat={(exportFormat) => update({ exportFormat })}
+          />
+        </aside>
+      </main>
+    </div>
+  );
+}
+
+export default App;

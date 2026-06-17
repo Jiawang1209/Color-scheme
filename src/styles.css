@@ -1,0 +1,448 @@
+/* SciColor — neutral professional theme */
+/* Typography: IBM Plex Sans for UI chrome; monospace for code */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* Reset #root constraint from Vite template */
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  text-align: left;
+  border: none;
+  min-height: 100svh;
+  display: block;
+}
+
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --border: #e3e6ea;
+  --border-strong: #c8cdd4;
+  --text: #1f2933;
+  --text-muted: #627282;
+  --accent: #2166ac;
+  --accent-light: #d6e8f7;
+  --accent-hover: #1a5490;
+  --radius: 4px;
+  --gap: 16px;
+  --header-h: 52px;
+  font-size: 14px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  height: var(--header-h);
+  padding: 0 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.header-center {
+  flex: 1;
+  max-width: 320px;
+}
+
+.header-right {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.app-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ── Tab / button groups ── */
+.type-tabs,
+.cvd-toggle,
+.n-selector,
+.export-tabs {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.type-tabs button,
+.cvd-toggle button,
+.n-selector button,
+.export-tabs button {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 120ms, color 120ms, border-color 120ms;
+  white-space: nowrap;
+}
+
+.type-tabs button:hover,
+.cvd-toggle button:hover,
+.n-selector button:hover,
+.export-tabs button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.type-tabs button.active,
+.cvd-toggle button.active,
+.n-selector button.active,
+.export-tabs button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ── Search input ── */
+.search-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color 120ms;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+  background: var(--surface);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ── Three-column layout ── */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 1.6fr 1fr;
+  gap: var(--gap);
+  padding: var(--gap);
+  min-height: calc(100vh - var(--header-h));
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Sidebar ── */
+.sidebar,
+.export-sidebar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.sidebar-section {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sidebar-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+/* ── Collection / Safety checkboxes ── */
+.collection-filter,
+.safety-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.collection-filter label,
+.safety-filter label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.collection-filter input[type="checkbox"],
+.safety-filter input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ── Palette list ── */
+.palette-list-section {
+  padding-bottom: 14px;
+}
+
+.palette-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: calc(100vh - 380px);
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.palette-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.palette-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.palette-list::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 2px;
+}
+
+.palette-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background 100ms, border-color 100ms;
+}
+
+.palette-row:hover {
+  background: var(--bg);
+  border-color: var(--border);
+}
+
+.palette-row.active {
+  background: var(--accent-light);
+  border-color: var(--accent);
+}
+
+.palette-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ── Swatch strip ── */
+.swatch-strip {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* In palette list rows: compact height */
+.palette-row .swatch-strip {
+  height: 14px;
+}
+
+.swatch {
+  flex: 1;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Center strip swatches: taller with hex label */
+.center-strip .swatch-strip {
+  height: 52px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.center-strip .swatch {
+  height: 52px;
+}
+
+.swatch-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  padding: 1px 4px;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 140ms;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.swatch:hover .swatch-label {
+  opacity: 1;
+}
+
+/* In palette list rows, hide labels entirely */
+.palette-row .swatch-label {
+  display: none;
+}
+
+/* ── Center panel ── */
+.center-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.center-palette-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.palette-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.palette-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.center-strip {
+  /* strip container */
+}
+
+.center-preview {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.center-preview svg {
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* ── Empty state ── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.empty-state p:first-child {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.empty-hint {
+  font-size: 13px;
+}
+
+/* ── Export panel ── */
+.export-sidebar {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.export-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.export-panel pre {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 80px;
+}
+
+.copy-btn {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 120ms, color 120ms;
+  align-self: flex-start;
+}
+
+.copy-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
