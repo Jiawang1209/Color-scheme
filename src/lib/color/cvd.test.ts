@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { simulateCvd, CvdMode } from './cvd';
+import { simulateCvd } from './cvd';
+import type { CvdMode } from './cvd';
 
 describe('simulateCvd', () => {
   it('normal mode returns input unchanged', () => {

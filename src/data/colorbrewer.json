@@ -1,0 +1,11 @@
+[
+  { "id": "BuGn", "name": "BuGn", "collection": "colorbrewer", "type": "sequential",
+    "discrete": { "3": ["#e5f5f9","#99d8c9","#2ca25f"], "4": ["#edf8fb","#b2e2e2","#66c2a4","#238b45"], "5": ["#edf8fb","#b2e2e2","#66c2a4","#2ca25f","#006d2c"] },
+    "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": false } },
+  { "id": "RdBu", "name": "RdBu", "collection": "colorbrewer", "type": "diverging",
+    "discrete": { "3": ["#ef8a62","#f7f7f7","#67a9cf"], "5": ["#ca0020","#f4a582","#f7f7f7","#92c5de","#0571b0"] },
+    "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": false } },
+  { "id": "Set2", "name": "Set2", "collection": "colorbrewer", "type": "qualitative",
+    "discrete": { "3": ["#66c2a5","#fc8d62","#8da0cb"], "5": ["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854"] },
+    "meta": { "colorblindSafe": "partial", "printFriendly": true, "photocopySafe": false } }
+]

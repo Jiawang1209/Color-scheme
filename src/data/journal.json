@@ -1,0 +1,8 @@
+[
+  { "id": "npg", "name": "Nature (NPG)", "collection": "journal", "type": "qualitative",
+    "discrete": { "5": ["#e64b35","#4dbbd5","#00a087","#3c5488","#f39b7f"] },
+    "meta": { "colorblindSafe": "partial", "printFriendly": true, "photocopySafe": false } },
+  { "id": "aaas", "name": "Science (AAAS)", "collection": "journal", "type": "qualitative",
+    "discrete": { "5": ["#3b4992","#ee0000","#008b45","#631879","#008280"] },
+    "meta": { "colorblindSafe": "partial", "printFriendly": true, "photocopySafe": false } }
+]

@@ -1,0 +1,11 @@
+[
+  { "id": "batlow", "name": "batlow", "collection": "crameri", "type": "sequential",
+    "controlPoints": ["#011959","#10557e","#5e7460","#b18e3f","#faccfa"],
+    "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": true } },
+  { "id": "vik", "name": "vik", "collection": "crameri", "type": "diverging",
+    "controlPoints": ["#001260","#3a7cba","#f4f4f4","#c47a4a","#590008"],
+    "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": true } },
+  { "id": "roma", "name": "roma", "collection": "crameri", "type": "diverging",
+    "controlPoints": ["#7e1900","#c5a23a","#dbf0a8","#5fb3c1","#1a3399"],
+    "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": true } }
+]

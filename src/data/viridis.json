@@ -1,0 +1,11 @@
+[
+  { "id": "viridis", "name": "viridis", "collection": "viridis", "type": "sequential",
+    "controlPoints": ["#440154","#414487","#2a788e","#22a884","#7ad151","#fde725"],
+    "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": true } },
+  { "id": "magma", "name": "magma", "collection": "viridis", "type": "sequential",
+    "controlPoints": ["#000004","#3b0f70","#8c2981","#de4968","#fe9f6d","#fcfdbf"],
+    "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": true } },
+  { "id": "cividis", "name": "cividis", "collection": "viridis", "type": "sequential",
+    "controlPoints": ["#00224e","#35577d","#7c7b78","#b5a04b","#fee838"],
+    "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": true } }
+]
