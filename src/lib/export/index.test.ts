@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { exportCode, ExportFormat } from './index';
+import { exportCode } from './index';
+import type { ExportFormat } from './index';
 
 const colors = ['#e5f5f9', '#99d8c9', '#2ca25f'];
 
