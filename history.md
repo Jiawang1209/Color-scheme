@@ -46,3 +46,4 @@
 | 00:06 | world geo features from topojson (lib/map/geo) | `f827dbf` |
 | 00:08 | real geographic world choropleth map preview (MapPreview + d3-geo) | `ec3b80a` |
 | 00:13 | 学术严谨风重塑：密度/细边框/等宽数字/地图图例 (styles.css) | `bfc272f` |
+| 00:23 | 地图改为美国县级 choropleth + 州界 (us-atlas, geoAlbersUsa) | `a07ab37` |
