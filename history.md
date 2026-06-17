@@ -27,3 +27,4 @@
 | 22:41 | GitHub Pages deploy config (vite base + Actions workflow + README) | `f8881bc` |
 | 23:08 | tools expansion plan: map preview + 取色器 + 图片取色 | `6036819` |
 | 23:10 | rgb/hsl conversion (lib/color/hsl) | `9f1d1e9` |
+| 23:13 | perceptual distance + nearest palette color (lib/color/nearest) | `3a5480f` |
