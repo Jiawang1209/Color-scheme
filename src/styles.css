@@ -657,3 +657,154 @@ body {
 .nearest-link:hover {
   text-decoration: underline;
 }
+
+/* ── Image Extraction View ── */
+.image-view {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px var(--gap);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.drop-zone {
+  border: 2px dashed var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 140ms, background 140ms;
+  overflow: hidden;
+}
+
+.drop-zone--active {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.drop-zone:hover {
+  border-color: var(--accent);
+}
+
+.drop-zone-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 32px 20px;
+  pointer-events: none;
+}
+
+.drop-zone-icon {
+  font-size: 28px;
+  line-height: 1;
+  color: var(--border-strong);
+}
+
+.drop-zone-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  opacity: 0.75;
+}
+
+.image-thumb {
+  max-width: 280px;
+  max-height: 280px;
+  border-radius: 4px;
+  display: block;
+  object-fit: contain;
+}
+
+.image-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.upload-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 120ms, color 120ms;
+  white-space: nowrap;
+}
+
+.upload-label:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.upload-label input[type="file"] {
+  /* visually hidden but still accessible via label */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.slider-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.slider-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--accent);
+  height: 4px;
+  cursor: pointer;
+}
+
+.slider-count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  min-width: 18px;
+  text-align: right;
+}
+
+.image-results {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.image-swatch-wrap .swatch-strip {
+  height: 52px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.image-swatch-wrap .swatch {
+  height: 52px;
+}
