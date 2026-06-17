@@ -446,3 +446,214 @@ body {
   background: var(--accent);
   color: #fff;
 }
+
+/* ── Picker View ── */
+.picker-view {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  padding: 24px;
+  max-width: 820px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .picker-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+.picker-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* react-colorful picker sizing */
+.picker-left .react-colorful {
+  width: 220px;
+  height: 220px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.picker-preview-swatch {
+  width: 220px;
+  height: 48px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  transition: background 80ms;
+}
+
+.picker-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Color code rows ── */
+.picker-codes {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.picker-codes-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.picker-code-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.picker-code-row:last-child {
+  border-bottom: none;
+}
+
+.picker-code-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  width: 32px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.picker-code-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--text);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.picker-copy-btn {
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 120ms, color 120ms, border-color 120ms;
+}
+
+.picker-copy-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Eyedropper ── */
+.picker-eyedropper {
+  display: flex;
+}
+
+.picker-eyedrop-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 120ms, color 120ms, border-color 120ms;
+}
+
+.picker-eyedrop-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+.picker-eyedrop-btn:disabled {
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.picker-eyedrop-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* ── Nearest palette box ── */
+.nearest-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.nearest-box-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.nearest-box-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+}
+
+.nearest-swatch {
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.nearest-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nearest-text {
+  font-size: 13px;
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  line-height: 1.4;
+}
+
+.nearest-link {
+  font-size: 12px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nearest-link:hover {
+  text-decoration: underline;
+}

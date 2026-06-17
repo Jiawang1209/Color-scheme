@@ -9,6 +9,6 @@ describe('App shell', () => {
   it('switches to the picker view', () => {
     render(<App />);
     fireEvent.click(screen.getByRole('button', { name: '取色器' }));
-    expect(screen.getByText('即将到来')).toBeInTheDocument();
+    expect(screen.getByTestId('picker-hex')).toBeInTheDocument();
   });
 });
