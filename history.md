@@ -33,3 +33,4 @@
 | 23:21 | app shell + 3 tabs + LibraryView extraction (App/AppTabs/views) | `b941fc1` |
 | 23:25 | deterministic Voronoi region geometry (lib/map/regions) | `1fd2f23` |
 | 23:25 | scalar field → palette class assignment (lib/map/field) | `b186785` |
+| 23:28 | abstract choropleth map preview + preview switch (MapPreview/PreviewSwitch) | `fc3c7e7` |
