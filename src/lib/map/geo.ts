@@ -1,15 +1,22 @@
-import { feature } from 'topojson-client';
-import world from 'world-atlas/countries-110m.json';
-import type { Feature, Geometry } from 'geojson';
+import { feature, mesh } from 'topojson-client';
+import us from 'us-atlas/counties-10m.json';
+import type { Feature, Geometry, MultiLineString } from 'geojson';
 
-let cache: Feature<Geometry>[] | null = null;
+let countiesCache: Feature<Geometry>[] | null = null;
+let statesMeshCache: MultiLineString | null = null;
 
-export function worldFeatures(): Feature<Geometry>[] {
-  if (cache) return cache;
-  // world-atlas countries-110m has objects.countries and objects.land
-  const fc = feature(world as never, (world as never as { objects: { countries: never } }).objects.countries) as unknown as {
+export function usCounties(): Feature<Geometry>[] {
+  if (countiesCache) return countiesCache;
+  const fc = feature(us as never, (us as never as { objects: { counties: never } }).objects.counties) as unknown as {
     features: Feature<Geometry>[];
   };
-  cache = fc.features;
-  return cache;
+  countiesCache = fc.features;
+  return countiesCache;
+}
+
+export function usStatesMesh(): MultiLineString {
+  if (statesMeshCache) return statesMeshCache;
+  const m = mesh(us as never, (us as never as { objects: { states: never } }).objects.states, (a: unknown, b: unknown) => a !== b) as unknown as MultiLineString;
+  statesMeshCache = m;
+  return statesMeshCache;
 }

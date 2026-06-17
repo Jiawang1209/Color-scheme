@@ -530,14 +530,6 @@ body {
 }
 
 /* Map element styles (SVG) */
-.map-sphere {
-  /* fill set inline; override to cooler tint */
-}
-
-.map-graticule {
-  /* stroke set inline */
-}
-
 .map-country {
   stroke: #ffffff;
   stroke-width: 0.4px;

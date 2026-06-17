@@ -18,7 +18,7 @@
     "react-colorful": "^5.7.0",
     "react-dom": "^19.2.6",
     "topojson-client": "^3.1.0",
-    "world-atlas": "^2.0.2"
+    "us-atlas": "^3.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

@@ -1,14 +1,17 @@
 import { describe, it, expect } from 'vitest';
-import { worldFeatures } from './geo';
+import { usCounties, usStatesMesh } from './geo';
 
-describe('worldFeatures', () => {
-  it('returns many country features', () => {
-    expect(worldFeatures().length).toBeGreaterThan(100);
+describe('us geo', () => {
+  it('returns many county features', () => {
+    expect(usCounties().length).toBeGreaterThan(1000);
   });
-  it('each feature has a geometry', () => {
-    expect(worldFeatures().every((f) => f.geometry != null)).toBe(true);
+  it('each county has a geometry', () => {
+    expect(usCounties().every((f) => f.geometry != null)).toBe(true);
   });
-  it('is memoized (same array reference)', () => {
-    expect(worldFeatures()).toBe(worldFeatures());
+  it('state mesh is a MultiLineString', () => {
+    expect(usStatesMesh().type).toBe('MultiLineString');
+  });
+  it('counties are memoized', () => {
+    expect(usCounties()).toBe(usCounties());
   });
 });
