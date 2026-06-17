@@ -10,6 +10,20 @@
 
 ---
 
+## Development hard constraint: history.md (applies to EVERY task)
+
+After completing each task's feature commit(s), you MUST record the change in `history.md` before moving on:
+
+1. Make the feature commit(s) as written in the task.
+2. Get the short hash: `git rev-parse --short HEAD`.
+3. Get the time: `date "+%H:%M"`.
+4. Append one row under today's date heading in `history.md`: `| <time> | <feature summary> | \`<hash>\` |`. Add a new `## YYYY-MM-DD` heading + table header if the date isn't present yet.
+5. Commit separately: `git commit -m "docs(history): record <feature>"`.
+
+A task is NOT done until its `history.md` row exists and is committed. This is also stated in `CLAUDE.md`.
+
+---
+
 ## File Structure
 
 - `src/lib/color/convert.ts` — hex↔rgb helpers.
