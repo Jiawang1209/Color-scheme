@@ -7,5 +7,14 @@
     "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": true } },
   { "id": "cividis", "name": "cividis", "collection": "viridis", "type": "sequential",
     "controlPoints": ["#00224e","#35577d","#7c7b78","#b5a04b","#fee838"],
+    "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": true } },
+  { "id": "inferno", "name": "inferno", "collection": "viridis", "type": "sequential",
+    "controlPoints": ["#000004","#420a68","#932667","#dd513a","#fca50a","#fcffa4"],
+    "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": true } },
+  { "id": "plasma", "name": "plasma", "collection": "viridis", "type": "sequential",
+    "controlPoints": ["#0d0887","#6a00a8","#b12a90","#e16462","#fca636","#f0f921"],
+    "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": true } },
+  { "id": "turbo", "name": "turbo", "collection": "viridis", "type": "sequential",
+    "controlPoints": ["#30123b","#4669db","#26bf7c","#d2e935","#fb8022","#7a0403"],
     "meta": { "colorblindSafe": true, "printFriendly": true, "photocopySafe": true } }
 ]

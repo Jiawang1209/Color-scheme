@@ -4,5 +4,14 @@
     "meta": { "colorblindSafe": "partial", "printFriendly": true, "photocopySafe": false } },
   { "id": "aaas", "name": "Science (AAAS)", "collection": "journal", "type": "qualitative",
     "discrete": { "5": ["#3b4992","#ee0000","#008b45","#631879","#008280"] },
+    "meta": { "colorblindSafe": "partial", "printFriendly": true, "photocopySafe": false } },
+  { "id": "lancet", "name": "Lancet", "collection": "journal", "type": "qualitative",
+    "discrete": { "5": ["#00468b","#ed0000","#42b540","#0099b4","#925e9f"] },
+    "meta": { "colorblindSafe": "partial", "printFriendly": true, "photocopySafe": false } },
+  { "id": "nejm", "name": "NEJM", "collection": "journal", "type": "qualitative",
+    "discrete": { "5": ["#bc3c29","#0072b5","#e18727","#20854e","#7876b1"] },
+    "meta": { "colorblindSafe": "partial", "printFriendly": true, "photocopySafe": false } },
+  { "id": "jama", "name": "JAMA", "collection": "journal", "type": "qualitative",
+    "discrete": { "5": ["#374e55","#df8f44","#00a1d5","#b24745","#79af97"] },
     "meta": { "colorblindSafe": "partial", "printFriendly": true, "photocopySafe": false } }
 ]
