@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { ExportFormat } from '../lib/export/index';
 import { exportCode } from '../lib/export/index';
 
@@ -19,6 +20,14 @@ const FORMATS: { fmt: ExportFormat; label: string }[] = [
 
 export function ExportPanel({ format, colors, name, onFormat }: ExportPanelProps) {
   const code = exportCode(format, colors, name);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard?.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
+
   return (
     <div className="export-panel">
       <div className="export-tabs">
@@ -33,8 +42,11 @@ export function ExportPanel({ format, colors, name, onFormat }: ExportPanelProps
         ))}
       </div>
       <pre data-testid="export-code">{code}</pre>
-      <button className="copy-btn" onClick={() => navigator.clipboard?.writeText(code)}>
-        复制
+      <button
+        className={`copy-btn${copied ? ' copied' : ''}`}
+        onClick={handleCopy}
+      >
+        {copied ? '已复制 ✓' : '复制'}
       </button>
     </div>
   );
