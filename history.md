@@ -49,3 +49,4 @@
 | 00:23 | 地图改为美国县级 choropleth + 州界 (us-atlas, geoAlbersUsa) | `a07ab37` |
 | 00:42 | 布局再平衡：大色带/小地图/宽导出 + 地图 hover 取色提示 | `2c9adf5` |
 | 07:46 | 地图 hover 性能优化：county 路径 memo 化 + 事件委托 (MapPreview) | `56a5c5a` |
+| 16:59 | 地图预览放大到约占一半面积（去掉尺寸上限+加宽中列）| `8275db4` |
