@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useRef, useEffect, useMemo, useState } from 'react';
 import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { usCounties, usStatesMesh } from '../lib/map/geo';
 import { classIndex } from '../lib/map/field';
@@ -12,57 +12,99 @@ const H = 400;
 export function MapPreview({ colors, cvd, type }: { colors: string[]; cvd: CvdMode; type: PaletteType }) {
   const counties = usCounties();
   const statesMesh = usStatesMesh();
-  const [hover, setHover] = useState<{ hex: string; x: number; y: number } | null>(null);
 
-  const { path, statesPath } = useMemo(() => {
+  const { path, centroids } = useMemo(() => {
     const projection = geoAlbersUsa().fitSize([W, H], { type: 'FeatureCollection', features: counties } as never);
     const p = geoPath(projection);
-    return { path: p, statesPath: p(statesMesh as never) ?? '' };
+    const cents = counties.map((f) => p.centroid(f as never));
+    return { path: p, centroids: cents };
   }, [counties, statesMesh]);
 
-  // Memoized county paths: keyed on colors/cvd/type/counties/path.
-  // Hover state is excluded, so changing hover does NOT rebuild or reconcile these 3142 elements.
-  const countryEls = useMemo(() => {
-    if (!colors.length) return null;
-    return counties.map((f, i) => {
-      const d = path(f as never);
-      if (!d) return null;
-      const c = path.centroid(f as never);
-      if (!c || Number.isNaN(c[0])) return null; // AlbersUsa returns NaN for points outside the US clip
-      const idx = classIndex(type, c[0], c[1], W, H, colors.length);
-      const hex = colors[idx];
-      return (
-        <path
-          key={i}
-          className="map-country"
-          d={d}
-          fill={simulateCvd(hex, cvd)}
-          data-hex={hex}
-          stroke="#fff"
-          strokeWidth={0.15}
-        />
-      );
-    });
-  }, [colors, cvd, type, counties, path]);
+  const mainRef = useRef<HTMLCanvasElement>(null);
+  const pickRef = useRef<HTMLCanvasElement | null>(null);
+  const classRef = useRef<number[]>([]);
 
-  // Single delegated handler on the wrapper — reads data-hex from the target element.
+  // Build pick canvas once per [counties, path] — independent of colors
+  useEffect(() => {
+    const pick = document.createElement('canvas');
+    pick.width = W;
+    pick.height = H;
+    const ctx = pick.getContext('2d');
+    if (!ctx) { pickRef.current = null; return; }
+    ctx.clearRect(0, 0, W, H);
+    path.context(ctx);
+    counties.forEach((f, i) => {
+      const id = i + 1;
+      ctx.fillStyle = `rgb(${id & 255},${(id >> 8) & 255},${(id >> 16) & 255})`;
+      ctx.beginPath();
+      path(f as never);
+      ctx.fill();
+    });
+    path.context(null as never);
+    pickRef.current = pick;
+  }, [counties, path]);
+
+  // Main draw — on [colors, cvd, type, path]
+  useEffect(() => {
+    const canvas = mainRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return; // jsdom: no 2d context — guard so tests don't crash
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    if (!colors.length) { classRef.current = []; return; }
+    const cls: number[] = [];
+    path.context(ctx);
+    counties.forEach((f, i) => {
+      const c = centroids[i];
+      const idx = (!c || Number.isNaN(c[0])) ? 0 : classIndex(type, c[0], c[1], W, H, colors.length);
+      cls[i] = idx;
+      ctx.fillStyle = simulateCvd(colors[idx], cvd);
+      ctx.beginPath();
+      path(f as never);
+      ctx.fill();
+    });
+    // state borders
+    ctx.beginPath();
+    path(statesMesh as never);
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 0.6;
+    ctx.stroke();
+    path.context(null as never);
+    classRef.current = cls;
+  }, [colors, cvd, type, path, counties, centroids, statesMesh]);
+
+  const [hover, setHover] = useState<{ hex: string; x: number; y: number } | null>(null);
+
   const onMove = (e: React.MouseEvent) => {
-    const el = e.target as Element;
-    const hex = el instanceof SVGPathElement ? el.getAttribute('data-hex') : null;
-    if (hex) {
-      const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-      setHover({ hex, x: e.clientX - rect.left, y: e.clientY - rect.top });
-    } else {
-      setHover(null);
-    }
+    const canvas = mainRef.current;
+    const pick = pickRef.current;
+    if (!canvas || !pick) return;
+    const rect = canvas.getBoundingClientRect();
+    const px = Math.floor((e.clientX - rect.left) / rect.width * W);
+    const py = Math.floor((e.clientY - rect.top) / rect.height * H);
+    const pctx = pick.getContext('2d');
+    if (!pctx) return;
+    const d = pctx.getImageData(px, py, 1, 1).data;
+    const id = d[0] + (d[1] << 8) + (d[2] << 16);
+    if (id === 0) { setHover(null); return; }
+    const i = id - 1;
+    const idx = classRef.current[i];
+    if (idx == null || !colors[idx]) { setHover(null); return; }
+    setHover({ hex: colors[idx], x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
 
   return (
     <div className="map-wrap" style={{ position: 'relative' }} onMouseMove={onMove} onMouseLeave={() => setHover(null)}>
-      <svg data-testid="map" className="map-preview" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet">
-        {countryEls}
-        <path className="map-states" d={statesPath} fill="none" stroke="#fff" strokeWidth={0.6} pointerEvents="none" />
-      </svg>
+      <canvas
+        ref={mainRef}
+        data-testid="map"
+        className="map-preview"
+        style={{ width: '100%', height: 'auto', aspectRatio: `${W} / ${H}`, display: 'block' }}
+      />
       {hover && (
         <div className="map-tooltip" style={{ left: hover.x + 12, top: hover.y + 12 }}>
           <span className="map-tooltip-chip" style={{ background: hover.hex }} />
