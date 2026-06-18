@@ -50,7 +50,7 @@
   /* Motion */
   --dur: 150ms;
 
-  font-size: 13px;
+  font-size: 15px;
 }
 
 /* ── Reset ─────────────────────────────────────────────────────────── */
@@ -107,7 +107,7 @@ body {
 .app-title {
   font-family: var(--font-ui);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: -0.02em;
   color: var(--text);
   white-space: nowrap;
@@ -157,10 +157,10 @@ body {
 .preview-switch button,
 .preview-switch-btn {
   font-family: var(--font-ui);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1;
-  padding: 5px 11px;
+  padding: 6px 13px;
   border: none;
   border-radius: 4px;
   background: transparent;
@@ -213,10 +213,10 @@ body {
 /* N-selector: monospace numerals */
 .n-selector button {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
-  padding: 5px 8px;
-  min-width: 28px;
+  padding: 6px 9px;
+  min-width: 30px;
   text-align: center;
 }
 
@@ -256,15 +256,15 @@ body {
 .search-input {
   width: 100%;
   font-family: var(--font-ui);
-  font-size: 12px;
-  padding: 6px 10px;
+  font-size: 13px;
+  padding: 7px 11px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--surface-2);
   color: var(--text);
   outline: none;
   transition: border-color var(--dur), box-shadow var(--dur), background var(--dur);
-  height: 30px;
+  height: 34px;
 }
 
 .search-input:focus {
@@ -281,9 +281,9 @@ body {
 /* Primary button */
 .btn-primary {
   font-family: var(--font-ui);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border: none;
   border-radius: var(--radius-sm);
   background: var(--accent);
@@ -314,9 +314,9 @@ body {
 /* Secondary/ghost button */
 .btn-secondary {
   font-family: var(--font-ui);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
   background: var(--surface);
@@ -365,7 +365,7 @@ body {
 }
 
 .sidebar-section {
-  padding: var(--sp-3) var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
   border-bottom: 1px solid var(--border);
 }
 
@@ -374,7 +374,7 @@ body {
 }
 
 .sidebar-label {
-  font-size: 10.5px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -396,11 +396,11 @@ body {
   display: flex;
   align-items: center;
   gap: var(--sp-2);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text);
   cursor: pointer;
   line-height: 1.4;
-  padding: 2px 0;
+  padding: 3px 0;
   transition: color var(--dur);
 }
 
@@ -482,7 +482,7 @@ body {
 
 .palette-name {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 400;
   color: var(--text-muted);
   letter-spacing: 0;
@@ -522,13 +522,13 @@ body {
 
 /* Center strip swatches: hero height */
 .center-strip .swatch-strip {
-  height: 84px;
+  height: 56px;
   border-radius: var(--radius);
   overflow: hidden;
 }
 
 .center-strip .swatch {
-  height: 84px;
+  height: 56px;
 }
 
 .center-strip .swatch:hover {
@@ -539,11 +539,11 @@ body {
 .center-strip .swatch::after {
   content: attr(title);
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 13px;
   font-weight: 500;
   background: rgba(0, 0, 0, 0.58);
   color: #fff;
-  padding: 2px 6px;
+  padding: 3px 7px;
   border-radius: 3px;
   letter-spacing: 0.04em;
   position: absolute;
@@ -567,11 +567,11 @@ body {
 
 .swatch-label {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 13px;
   font-weight: 400;
   background: rgba(0, 0, 0, 0.48);
   color: #fff;
-  padding: 1px 4px;
+  padding: 2px 5px;
   border-radius: 2px;
   opacity: 0;
   transition: opacity var(--dur);
@@ -594,10 +594,10 @@ body {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: var(--sp-5);
+  padding: var(--sp-6);
   display: flex;
   flex-direction: column;
-  gap: var(--sp-4);
+  gap: var(--sp-5);
   box-shadow: var(--shadow-sm);
 }
 
@@ -610,15 +610,15 @@ body {
 
 .palette-title {
   font-family: var(--font-mono);
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 650;
   color: var(--text);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .palette-meta {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 13px;
   color: var(--text-faint);
   letter-spacing: 0.01em;
 }
@@ -706,7 +706,7 @@ body {
 
 .map-tooltip-hex {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text);
   letter-spacing: 0.04em;
@@ -742,13 +742,13 @@ body {
 
 .map-legend-tick {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   color: var(--text-faint);
   letter-spacing: 0.03em;
 }
 
 .map-legend-caption {
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -774,13 +774,13 @@ body {
 }
 
 .empty-state p:first-child {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text);
 }
 
 .empty-hint {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-faint);
 }
 
@@ -800,23 +800,23 @@ body {
 
 .export-panel pre {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 13.5px;
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: var(--sp-3) var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
   white-space: pre-wrap;
   word-break: break-all;
   color: var(--text);
   line-height: 1.6;
-  min-height: 72px;
+  min-height: 80px;
 }
 
 .copy-btn {
   font-family: var(--font-ui);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
   background: var(--surface);
@@ -907,12 +907,12 @@ body {
 }
 
 .picker-codes-label {
-  font-size: 10.5px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--text-faint);
-  padding: 8px 14px 7px;
+  padding: 9px 14px 8px;
   border-bottom: 1px solid var(--border);
   background: var(--surface-2);
 }
@@ -921,7 +921,7 @@ body {
   display: flex;
   align-items: center;
   gap: var(--sp-2);
-  padding: 8px 14px;
+  padding: 10px 14px;
   border-bottom: 1px solid var(--border);
   transition: background var(--dur);
 }
@@ -936,10 +936,10 @@ body {
 
 .picker-code-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--text-faint);
-  width: 30px;
+  width: 34px;
   flex-shrink: 0;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -947,7 +947,7 @@ body {
 
 .picker-code-value {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 15px;
   color: var(--text);
   flex: 1;
   white-space: nowrap;
@@ -957,9 +957,9 @@ body {
 
 .picker-copy-btn {
   font-family: var(--font-ui);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
-  padding: 3px 8px;
+  padding: 4px 9px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--surface);
@@ -991,9 +991,9 @@ body {
   align-items: center;
   gap: 7px;
   font-family: var(--font-ui);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  padding: 7px 14px;
+  padding: 8px 16px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
   background: var(--surface);
@@ -1037,12 +1037,12 @@ body {
 }
 
 .nearest-box-label {
-  font-size: 10.5px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--text-faint);
-  padding: 8px 14px 7px;
+  padding: 9px 14px 8px;
   border-bottom: 1px solid var(--border);
   background: var(--surface-2);
 }
@@ -1070,14 +1070,14 @@ body {
 }
 
 .nearest-text {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--text-muted);
   font-family: var(--font-mono);
   line-height: 1.5;
 }
 
 .nearest-link {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--accent);
   text-decoration: none;
   font-weight: 500;
@@ -1136,20 +1136,20 @@ body {
   align-items: center;
   gap: 6px;
   color: var(--text-muted);
-  font-size: 13px;
-  padding: 32px 20px;
+  font-size: 14px;
+  padding: 36px 20px;
   pointer-events: none;
 }
 
 .drop-zone-icon {
-  font-size: 24px;
+  font-size: 28px;
   line-height: 1;
   color: var(--text-faint);
   margin-bottom: 2px;
 }
 
 .drop-zone-sub {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-faint);
 }
 
@@ -1173,9 +1173,9 @@ body {
   align-items: center;
   gap: 0;
   font-family: var(--font-ui);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
   background: var(--surface);
@@ -1217,7 +1217,7 @@ body {
 }
 
 .slider-label {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-muted);
   white-space: nowrap;
   flex-shrink: 0;
@@ -1233,10 +1233,10 @@ body {
 
 .slider-count {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--accent);
-  min-width: 18px;
+  min-width: 20px;
   text-align: right;
 }
 
