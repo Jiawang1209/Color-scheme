@@ -364,6 +364,22 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
+/* Sidebar fills the full page height as a sticky panel */
+.sidebar {
+  position: sticky;
+  top: calc(var(--header-h) + 44px + var(--sp-4));
+  height: calc(100vh - var(--header-h) - 44px - var(--sp-4) - var(--sp-4));
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 960px) {
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+}
+
 .sidebar-section {
   padding: var(--sp-4) var(--sp-5);
   border-bottom: 1px solid var(--border);
@@ -421,13 +437,18 @@ body {
 /* ── Palette list ───────────────────────────────────────────────────── */
 .palette-list-section {
   padding-bottom: var(--sp-2);
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .palette-list {
   display: flex;
   flex-direction: column;
   gap: 1px;
-  max-height: calc(100vh - 360px);
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding-right: 2px;
 }
