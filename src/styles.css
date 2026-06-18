@@ -264,7 +264,7 @@ body {
 /* ── Three-column layout ─────────────────────────────────────────── */
 .layout {
   display: grid;
-  grid-template-columns: minmax(200px, 0.8fr) minmax(0, 1.9fr) minmax(300px, 0.85fr);
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
   gap: var(--sp-3);
   padding: var(--sp-3);
   min-height: calc(100vh - var(--header-h) - 40px);
@@ -517,6 +517,12 @@ body {
 
 .center-strip {
   /* strip container — no extra gap needed */
+}
+
+/* Export/copy block, now sitting above the map */
+.center-export {
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--border);
 }
 
 .center-preview {

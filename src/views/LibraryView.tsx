@@ -114,6 +114,14 @@ export function LibraryView() {
               <div className="center-strip">
                 <SwatchStrip colors={colors} cvd={state.cvd} />
               </div>
+              <div className="center-export">
+                <ExportPanel
+                  format={state.exportFormat}
+                  colors={colors}
+                  name={current?.id ?? 'palette'}
+                  onFormat={(exportFormat) => update({ exportFormat })}
+                />
+              </div>
               <PreviewSwitch value={preview} onChange={setPreview} />
               <div className="center-preview">
                 {preview === 'map' ? (
@@ -150,15 +158,6 @@ export function LibraryView() {
             </div>
           )}
         </section>
-
-        <aside className="export-sidebar">
-          <ExportPanel
-            format={state.exportFormat}
-            colors={colors}
-            name={current?.id ?? 'palette'}
-            onFormat={(exportFormat) => update({ exportFormat })}
-          />
-        </aside>
       </main>
     </div>
   );
