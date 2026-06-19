@@ -822,6 +822,10 @@ body {
 }
 
 /* ── Export panel ───────────────────────────────────────────────────── */
+.export-tabs {
+  flex-wrap: wrap;
+}
+
 .export-sidebar {
   padding: var(--sp-4);
   display: flex;

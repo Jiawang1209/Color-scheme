@@ -16,6 +16,10 @@ const FORMATS: { fmt: ExportFormat; label: string }[] = [
   { fmt: 'ggplot', label: 'ggplot2' },
   { fmt: 'plotly', label: 'plotly' },
   { fmt: 'r', label: 'R' },
+  { fmt: 'css', label: 'CSS' },
+  { fmt: 'd3', label: 'D3' },
+  { fmt: 'tailwind', label: 'Tailwind' },
+  { fmt: 'matlab', label: 'MATLAB' },
 ];
 
 export function ExportPanel({ format, colors, name, onFormat }: ExportPanelProps) {

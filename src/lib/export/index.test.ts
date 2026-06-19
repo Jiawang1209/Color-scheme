@@ -20,7 +20,23 @@ describe('exportCode', () => {
     expect(exportCode('rgb', colors, 'BuGn')).toContain('(229, 245, 249)');
   });
   it('every format returns a non-empty string', () => {
-    const fmts: ExportFormat[] = ['hex', 'rgb', 'matplotlib', 'ggplot', 'plotly', 'r'];
+    const fmts: ExportFormat[] = ['hex', 'rgb', 'matplotlib', 'ggplot', 'plotly', 'r', 'css', 'd3', 'tailwind', 'matlab'];
     for (const f of fmts) expect(exportCode(f, colors, 'BuGn').length).toBeGreaterThan(0);
+  });
+  it('css emits custom properties', () => {
+    expect(exportCode('css', colors, 'BuGn')).toContain('--BuGn-1: #e5f5f9;');
+  });
+  it('d3 emits the color array', () => {
+    const out = exportCode('d3', colors, 'BuGn');
+    expect(out).toContain('#2ca25f');
+    expect(out.toLowerCase()).toContain('d3');
+  });
+  it('tailwind emits shade keys', () => {
+    expect(exportCode('tailwind', colors, 'BuGn')).toContain("100:");
+  });
+  it('matlab emits a normalized matrix', () => {
+    const out = exportCode('matlab', colors, 'BuGn');
+    expect(out).toContain('BuGn = [');
+    expect(out).toContain('];');
   });
 });
