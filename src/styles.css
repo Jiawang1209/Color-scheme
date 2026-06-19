@@ -517,95 +517,111 @@ body {
 }
 
 /* ── Swatch strip ───────────────────────────────────────────────────── */
+
+/* ---- Default (fallback for any unscoped use) ---- */
 .swatch-strip {
   display: flex;
   flex-direction: row;
   width: 100%;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-/* In palette list rows: compact height */
-.palette-row .swatch-strip {
-  height: 9px;
-  border-radius: 2px;
 }
 
 .swatch {
   flex: 1;
   cursor: pointer;
-  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  transition: filter var(--dur), transform var(--dur);
+  gap: 5px;
 }
 
-/* Center strip swatches: hero height */
-.center-strip .swatch-strip {
-  height: 56px;
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.center-strip .swatch {
-  height: 56px;
-}
-
-.center-strip .swatch:hover {
-  filter: brightness(0.94);
-}
-
-/* Copy affordance on center swatch hover */
-.center-strip .swatch::after {
-  content: attr(title);
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 500;
-  background: rgba(0, 0, 0, 0.58);
-  color: #fff;
-  padding: 3px 7px;
-  border-radius: 3px;
-  letter-spacing: 0.04em;
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity var(--dur);
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-.center-strip .swatch:hover::after {
-  opacity: 1;
-}
-
-/* Hero swatch label (always visible fallback via .swatch-label) */
-.center-strip .swatch-label {
-  display: none; /* replaced by ::after pseudo */
+.swatch-color {
+  width: 100%;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+  transition: transform var(--dur), box-shadow var(--dur);
 }
 
 .swatch-label {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 400;
-  background: rgba(0, 0, 0, 0.48);
-  color: #fff;
-  padding: 2px 5px;
-  border-radius: 2px;
-  opacity: 0;
-  transition: opacity var(--dur);
-  pointer-events: none;
-  white-space: nowrap;
+  color: var(--text-muted);
   letter-spacing: 0.02em;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: color var(--dur);
+}
+
+.swatch:hover .swatch-color {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .swatch:hover .swatch-label {
+  color: var(--text);
+}
+
+/* ---- Hero (library center .center-strip) ---- */
+/* Separated chips with gap, labels below — airy and refined */
+.center-strip .swatch-strip {
+  gap: var(--sp-2);
+  border-radius: 0;
+  overflow: visible;
+}
+
+.center-strip .swatch {
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.center-strip .swatch-color {
+  height: 44px;
+  border-radius: var(--radius-sm);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04), var(--shadow-sm);
+}
+
+.center-strip .swatch-label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
   opacity: 1;
 }
 
-/* In palette list rows, hide labels entirely */
+.center-strip .swatch:hover .swatch-color {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.center-strip .swatch:hover .swatch-label {
+  color: var(--text);
+}
+
+/* ---- Sidebar palette-list mini previews ---- */
+/* Seamless thin band, no gap, no labels */
+.palette-row .swatch-strip {
+  gap: 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.palette-row .swatch {
+  flex-direction: column;
+  gap: 0;
+}
+
+.palette-row .swatch-color {
+  height: 9px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.palette-row .swatch:hover .swatch-color {
+  transform: none;
+  box-shadow: none;
+}
+
 .palette-row .swatch-label {
   display: none;
 }
@@ -1303,14 +1319,40 @@ body {
   gap: var(--sp-4);
 }
 
+/* ---- Image view extracted colors ---- */
+/* Labels below each chip, same refined pattern as hero */
 .image-swatch-wrap .swatch-strip {
-  height: 48px;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
+  gap: var(--sp-2);
+  border-radius: 0;
+  overflow: visible;
+  border: none;
+  box-shadow: none;
 }
 
 .image-swatch-wrap .swatch {
-  height: 48px;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.image-swatch-wrap .swatch-color {
+  height: 44px;
+  border-radius: var(--radius-sm);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06), var(--shadow-sm);
+}
+
+.image-swatch-wrap .swatch-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+.image-swatch-wrap .swatch:hover .swatch-color {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.image-swatch-wrap .swatch:hover .swatch-label {
+  color: var(--text);
 }

@@ -14,10 +14,10 @@ export function SwatchStrip({ colors, cvd }: SwatchStripProps) {
           key={color}
           data-testid="swatch"
           className="swatch"
-          style={{ background: simulateCvd(color, cvd) }}
           title={color}
           onClick={() => navigator.clipboard?.writeText(color)}
         >
+          <div className="swatch-color" style={{ background: simulateCvd(color, cvd) }} />
           <span className="swatch-label">{color}</span>
         </div>
       ))}
