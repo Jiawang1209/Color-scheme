@@ -70,3 +70,4 @@
 | 07:28 | 颜色分析工具：CIELAB 亮度曲线 + 感知灰度 (lib/color/analysis) | `7005bef` |
 | 07:31 | 新增「分析」预览：L* 亮度曲线 + 灰度/打印预览 (AnalysisPanel + PreviewSwitch) | `f580ea5` |
 | 07:40 | 新增导出格式 CSS/D3/Tailwind/MATLAB (lib/export + ExportPanel) | `69650c4` |
+| 07:45 | 下载功能：色带 PNG/SVG + 地图 PNG (lib/download + LibraryView) | `340ce06` |
