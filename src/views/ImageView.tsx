@@ -49,80 +49,87 @@ export function ImageView() {
   const rec = colors.length ? nearestPalette(colors) : null;
 
   return (
-    <div className="image-view">
-      <div
-        className={`drop-zone${dragging ? ' drop-zone--active' : ''}`}
-        onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
-        onDragLeave={() => setDragging(false)}
-        onDrop={(e) => {
-          e.preventDefault();
-          setDragging(false);
-          handleFile(e.dataTransfer.files[0]);
-        }}
-      >
-        {thumb ? (
-          <img src={thumb} alt="预览" className="image-thumb" />
-        ) : (
-          <div className="drop-zone-hint">
-            <span className="drop-zone-icon">⬆</span>
-            <span>拖拽图片到此处</span>
-            <span className="drop-zone-sub">或点击下方按钮选择文件</span>
-          </div>
-        )}
+    <div className="tool-page-shell">
+      <div className="tool-page-header">
+        <h1 className="tool-page-title">图片取色</h1>
+        <p className="tool-page-subtitle">上传图片，自动提取主色，并推荐最接近的科研配色方案。</p>
       </div>
 
-      <div className="image-controls">
-        <label className="upload-label">
-          上传图片
-          <input
-            type="file"
-            accept="image/*"
-            aria-label="上传图片"
-            onChange={(e) => e.target.files && handleFile(e.target.files[0])}
-          />
-        </label>
-
-        <div className="slider-row">
-          <span className="slider-label">提取颜色数</span>
-          <input
-            type="range"
-            role="slider"
-            min={3}
-            max={10}
-            value={n}
-            aria-label="提取颜色数"
-            onChange={(e) => setN(Number(e.target.value))}
-          />
-          <span className="slider-count">{n}</span>
-        </div>
-      </div>
-
-      {colors.length > 0 && (
-        <div className="image-results">
-          <div className="image-swatch-wrap">
-            <SwatchStrip colors={colors} cvd="normal" />
-          </div>
-
-          <ExportPanel format={fmt} colors={colors} name="extracted" onFormat={setFmt} />
-
-          {rec && (
-            <div className="nearest-box">
-              <div className="nearest-box-label">最接近的科研配色</div>
-              <div className="nearest-box-content">
-                <div className="nearest-info">
-                  <span className="nearest-text">{rec.paletteId}</span>
-                  <a
-                    href={`?view=library&id=${rec.paletteId}`}
-                    className="nearest-link"
-                  >
-                    在配色库中查看
-                  </a>
-                </div>
-              </div>
+      <div className="image-view">
+        <div
+          className={`drop-zone${dragging ? ' drop-zone--active' : ''}`}
+          onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
+          onDragLeave={() => setDragging(false)}
+          onDrop={(e) => {
+            e.preventDefault();
+            setDragging(false);
+            handleFile(e.dataTransfer.files[0]);
+          }}
+        >
+          {thumb ? (
+            <img src={thumb} alt="预览" className="image-thumb" />
+          ) : (
+            <div className="drop-zone-hint">
+              <span className="drop-zone-icon">⬆</span>
+              <span>拖拽图片到此处</span>
+              <span className="drop-zone-sub">或点击下方按钮选择文件</span>
             </div>
           )}
         </div>
-      )}
+
+        <div className="image-controls">
+          <label className="upload-label">
+            上传图片
+            <input
+              type="file"
+              accept="image/*"
+              aria-label="上传图片"
+              onChange={(e) => e.target.files && handleFile(e.target.files[0])}
+            />
+          </label>
+
+          <div className="slider-row">
+            <span className="slider-label">提取颜色数</span>
+            <input
+              type="range"
+              role="slider"
+              min={3}
+              max={10}
+              value={n}
+              aria-label="提取颜色数"
+              onChange={(e) => setN(Number(e.target.value))}
+            />
+            <span className="slider-count">{n}</span>
+          </div>
+        </div>
+
+        {colors.length > 0 && (
+          <div className="image-results">
+            <div className="image-swatch-wrap">
+              <SwatchStrip colors={colors} cvd="normal" />
+            </div>
+
+            <ExportPanel format={fmt} colors={colors} name="extracted" onFormat={setFmt} />
+
+            {rec && (
+              <div className="nearest-box">
+                <div className="nearest-box-label">最接近的科研配色</div>
+                <div className="nearest-box-content">
+                  <div className="nearest-info">
+                    <span className="nearest-text">{rec.paletteId}</span>
+                    <a
+                      href={`?view=library&id=${rec.paletteId}`}
+                      className="nearest-link"
+                    >
+                      在配色库中查看
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

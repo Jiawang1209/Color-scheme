@@ -870,14 +870,47 @@ body {
   background: #f0fdf4;
 }
 
+/* ── Tool page shell (shared by Picker + Image) ─────────────────────── */
+.tool-page-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--sp-6) var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.tool-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tool-page-title {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 650;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.tool-page-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 /* ── Picker View ────────────────────────────────────────────────────── */
 .picker-view {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: var(--sp-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
   padding: var(--sp-5);
-  max-width: 720px;
-  margin: 0;
+  box-shadow: var(--shadow-md);
   align-items: start;
 }
 
@@ -895,8 +928,8 @@ body {
 
 /* react-colorful picker sizing */
 .picker-left .react-colorful {
-  width: 200px;
-  height: 200px;
+  width: 270px;
+  height: 270px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   overflow: hidden;
@@ -904,8 +937,8 @@ body {
 }
 
 .picker-preview-swatch {
-  width: 200px;
-  height: 38px;
+  width: 270px;
+  height: 44px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   transition: background var(--dur);
@@ -1118,9 +1151,12 @@ body {
 
 /* ── Image Extraction View ──────────────────────────────────────────── */
 .image-view {
-  max-width: 680px;
-  margin: 0;
-  padding: var(--sp-5) var(--sp-4);
+  width: 100%;
+  padding: var(--sp-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
   gap: var(--sp-4);
@@ -1129,8 +1165,8 @@ body {
 .drop-zone {
   border: 1.5px dashed var(--border-strong);
   border-radius: var(--radius-lg);
-  background: var(--surface);
-  min-height: 148px;
+  background: var(--surface-2);
+  min-height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
