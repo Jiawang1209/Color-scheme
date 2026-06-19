@@ -68,3 +68,4 @@
 | 时间 | 改动 / 功能 | commit |
 |------|-------------|--------|
 | 07:28 | 颜色分析工具：CIELAB 亮度曲线 + 感知灰度 (lib/color/analysis) | `7005bef` |
+| 07:31 | 新增「分析」预览：L* 亮度曲线 + 灰度/打印预览 (AnalysisPanel + PreviewSwitch) | `f580ea5` |
