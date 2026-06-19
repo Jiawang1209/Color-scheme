@@ -3,6 +3,7 @@ import { AppTabs } from './components/AppTabs';
 import { LibraryView } from './views/LibraryView';
 import { PickerView } from './views/PickerView';
 import { ImageView } from './views/ImageView';
+import { Toaster } from './components/Toaster';
 import { readView, writeView } from './state/view';
 import type { AppView } from './state/view';
 
@@ -20,6 +21,7 @@ export default function App() {
       {view === 'library' && <LibraryView />}
       {view === 'picker' && <PickerView />}
       {view === 'image' && <ImageView />}
+      <Toaster />
     </div>
   );
 }

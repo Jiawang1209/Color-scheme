@@ -3,6 +3,7 @@ import { HexColorPicker } from 'react-colorful';
 import { hexToRgb } from '../lib/color/convert';
 import { hexToHsl } from '../lib/color/hsl';
 import { nearestPaletteColor } from '../lib/color/nearest';
+import { copyText } from '../lib/clipboard';
 
 export function PickerView() {
   const [hex, setHex] = useState('#2166ac');
@@ -21,7 +22,7 @@ export function PickerView() {
     } catch { /* user cancelled */ }
   };
 
-  const copy = (text: string) => navigator.clipboard?.writeText(text);
+  const copy = (text: string) => copyText(text, `已复制 ${text}`);
 
   return (
     <div className="tool-page-shell">

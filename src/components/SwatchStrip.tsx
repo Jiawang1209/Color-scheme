@@ -1,5 +1,6 @@
 import type { CvdMode } from '../lib/color/cvd';
 import { simulateCvd } from '../lib/color/cvd';
+import { copyText } from '../lib/clipboard';
 
 interface SwatchStripProps {
   colors: string[];
@@ -15,7 +16,7 @@ export function SwatchStrip({ colors, cvd }: SwatchStripProps) {
           data-testid="swatch"
           className="swatch"
           title={color}
-          onClick={() => navigator.clipboard?.writeText(color)}
+          onClick={() => copyText(color)}
         >
           <div className="swatch-color" style={{ background: simulateCvd(color, cvd) }} />
           <span className="swatch-label">{color}</span>

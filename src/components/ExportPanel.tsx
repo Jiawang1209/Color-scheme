@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { ExportFormat } from '../lib/export/index';
 import { exportCode } from '../lib/export/index';
+import { copyText } from '../lib/clipboard';
 
 interface ExportPanelProps {
   format: ExportFormat;
@@ -27,7 +28,7 @@ export function ExportPanel({ format, colors, name, onFormat }: ExportPanelProps
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard?.writeText(code);
+    copyText(code, '已复制代码');
     setCopied(true);
     setTimeout(() => setCopied(false), 1800);
   };
