@@ -14,6 +14,7 @@ import { SafetyFilter } from '../components/SafetyFilter';
 import { PaletteList } from '../components/PaletteList';
 import { ExportPanel } from '../components/ExportPanel';
 import { PreviewFigure } from '../components/PreviewFigure';
+import { AnalysisPanel } from '../components/AnalysisPanel';
 
 interface SafetyValue {
   cb: boolean;
@@ -27,7 +28,7 @@ export function LibraryView() {
   );
   const [query, setQuery] = useState('');
   const [safety, setSafety] = useState<SafetyValue>({ cb: false, print: false, grey: false });
-  const [preview, setPreview] = useState<'map' | 'chart'>('map');
+  const [preview, setPreview] = useState<'map' | 'chart' | 'analysis'>('map');
 
   useEffect(() => {
     const p = new URLSearchParams(encodeState(state));
@@ -146,8 +147,10 @@ export function LibraryView() {
                       </div>
                     )}
                   </div>
-                ) : (
+                ) : preview === 'chart' ? (
                   <PreviewFigure colors={colors} cvd={state.cvd} type={state.type} />
+                ) : (
+                  <AnalysisPanel colors={colors} />
                 )}
               </div>
             </>

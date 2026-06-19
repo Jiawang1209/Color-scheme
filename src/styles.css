@@ -1356,3 +1356,87 @@ body {
 .image-swatch-wrap .swatch:hover .swatch-label {
   color: var(--text);
 }
+
+/* ── Analysis Panel ─────────────────────────────────────────────────── */
+.analysis-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  padding: var(--sp-2) 0;
+}
+
+.analysis-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.analysis-title {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.analysis-hint {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--text-faint);
+  line-height: 1.5;
+}
+
+/* L* chart SVG */
+.lstar-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: visible;
+}
+
+.lstar-grid {
+  stroke: var(--border);
+  stroke-width: 1px;
+}
+
+.lstar-axis {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--text-faint);
+}
+
+.lstar-line {
+  stroke: var(--accent);
+  stroke-width: 2px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* Grayscale strip */
+.grayscale-strip {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.grayscale-swatch {
+  flex: 1;
+  height: 44px;
+  transition: transform var(--dur);
+}
+
+.grayscale-swatch + .grayscale-swatch {
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.analysis-empty {
+  font-size: 13px;
+  color: var(--text-faint);
+  padding: var(--sp-4) 0;
+}

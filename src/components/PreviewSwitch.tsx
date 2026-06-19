@@ -1,6 +1,6 @@
 interface PreviewSwitchProps {
-  value: 'map' | 'chart';
-  onChange: (v: 'map' | 'chart') => void;
+  value: 'map' | 'chart' | 'analysis';
+  onChange: (v: 'map' | 'chart' | 'analysis') => void;
 }
 
 export function PreviewSwitch({ value, onChange }: PreviewSwitchProps) {
@@ -17,6 +17,12 @@ export function PreviewSwitch({ value, onChange }: PreviewSwitchProps) {
         onClick={() => onChange('chart')}
       >
         图表
+      </button>
+      <button
+        className={`preview-switch-btn${value === 'analysis' ? ' active' : ''}`}
+        onClick={() => onChange('analysis')}
+      >
+        分析
       </button>
     </div>
   );
