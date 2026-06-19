@@ -15,6 +15,7 @@ import { PaletteList } from '../components/PaletteList';
 import { ExportPanel } from '../components/ExportPanel';
 import { PreviewFigure } from '../components/PreviewFigure';
 import { AnalysisPanel } from '../components/AnalysisPanel';
+import { paletteSvg, downloadSvg, downloadPngFromSvg, downloadCanvasPng } from '../lib/download';
 
 interface SafetyValue {
   cb: boolean;
@@ -122,6 +123,48 @@ export function LibraryView() {
                   name={current?.id ?? 'palette'}
                   onFormat={(exportFormat) => update({ exportFormat })}
                 />
+                <div className="download-row">
+                  <span className="download-label">下载：</span>
+                  <button
+                    className="btn-secondary btn-download"
+                    disabled={colors.length === 0}
+                    onClick={() =>
+                      downloadPngFromSvg(
+                        current?.id ?? 'palette',
+                        paletteSvg(colors, current?.id ?? 'palette')
+                      )
+                    }
+                    aria-label="下载色带 PNG"
+                  >
+                    ⤓ 色带 PNG
+                  </button>
+                  <button
+                    className="btn-secondary btn-download"
+                    disabled={colors.length === 0}
+                    onClick={() =>
+                      downloadSvg(
+                        current?.id ?? 'palette',
+                        paletteSvg(colors, current?.id ?? 'palette')
+                      )
+                    }
+                    aria-label="下载色带 SVG"
+                  >
+                    ⤓ 色带 SVG
+                  </button>
+                  {preview === 'map' && (
+                    <button
+                      className="btn-secondary btn-download"
+                      disabled={colors.length === 0}
+                      onClick={() => {
+                        const canvas = document.querySelector('canvas.map-preview') as HTMLCanvasElement | null;
+                        if (canvas) downloadCanvasPng((current?.id ?? 'palette') + '-map', canvas);
+                      }}
+                      aria-label="下载地图 PNG"
+                    >
+                      ⤓ 地图 PNG
+                    </button>
+                  )}
+                </div>
               </div>
               <PreviewSwitch value={preview} onChange={setPreview} />
               <div className="center-preview">

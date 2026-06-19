@@ -890,6 +890,40 @@ body {
   background: #f0fdf4;
 }
 
+/* ── Download row ───────────────────────────────────────────────────── */
+.download-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+}
+
+.download-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-right: var(--sp-1);
+  flex-shrink: 0;
+}
+
+.btn-download {
+  font-size: 12px;
+  padding: 5px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 0.01em;
+}
+
+.btn-download:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* ── Tool page shell (shared by Picker + Image) ─────────────────────── */
 .tool-page-shell {
   max-width: 960px;
