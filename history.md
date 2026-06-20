@@ -72,3 +72,4 @@
 | 07:40 | 新增导出格式 CSS/D3/Tailwind/MATLAB (lib/export + ExportPanel) | `69650c4` |
 | 07:45 | 下载功能：色带 PNG/SVG + 地图 PNG (lib/download + LibraryView) | `340ce06` |
 | 07:49 | 全局复制 toast 反馈（色块/取色器/导出）(lib/clipboard + Toaster) | `a2e8adc` |
+| 09:44 | gitignore .omc/ 本地工具目录 | `83423ec` |
