@@ -28,5 +28,7 @@ export function exportCode(fmt: ExportFormat, colors: string[], name: string): s
       return `// tailwind.config.js → theme.extend.colors\n'${name}': {\n${colors.map((c, i) => `  ${(i + 1) * 100}: '${c}',`).join('\n')}\n}`;
     case 'matlab':
       return `${name} = [\n${colors.map((c) => { const { r, g, b } = hexToRgb(c); return `  ${(r / 255).toFixed(4)} ${(g / 255).toFixed(4)} ${(b / 255).toFixed(4)};`; }).join('\n')}\n];`;
+    default:
+      return `[${quoted(colors)}]`;
   }
 }

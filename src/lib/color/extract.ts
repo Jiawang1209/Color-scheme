@@ -18,7 +18,7 @@ function average(px: Rgb[]): Rgb {
 
 export function medianCut(pixels: Rgb[], n: number): string[] {
   if (pixels.length === 0) return [];
-  let buckets: Rgb[][] = [pixels];
+  const buckets: Rgb[][] = [pixels];
   while (buckets.length < n) {
     let bi = -1, bestRange = -1, bestChan: 'r' | 'g' | 'b' = 'r';
     buckets.forEach((b, i) => {

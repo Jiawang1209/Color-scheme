@@ -39,4 +39,9 @@ describe('exportCode', () => {
     expect(out).toContain('BuGn = [');
     expect(out).toContain('];');
   });
+  it('falls back to hex output for an unknown format', () => {
+    const out = exportCode('bogus' as ExportFormat, colors, 'BuGn');
+    expect(out).toContain('"#e5f5f9"');
+    expect(out.length).toBeGreaterThan(0);
+  });
 });

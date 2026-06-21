@@ -18,7 +18,7 @@ export function MapPreview({ colors, cvd, type }: { colors: string[]; cvd: CvdMo
     const p = geoPath(projection);
     const cents = counties.map((f) => p.centroid(f as never));
     return { path: p, centroids: cents };
-  }, [counties, statesMesh]);
+  }, [counties]);
 
   const mainRef = useRef<HTMLCanvasElement>(null);
   const pickRef = useRef<HTMLCanvasElement | null>(null);
