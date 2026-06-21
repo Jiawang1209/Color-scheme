@@ -73,3 +73,10 @@
 | 07:45 | 下载功能：色带 PNG/SVG + 地图 PNG (lib/download + LibraryView) | `340ce06` |
 | 07:49 | 全局复制 toast 反馈（色块/取色器/导出）(lib/clipboard + Toaster) | `a2e8adc` |
 | 09:44 | gitignore .omc/ 本地工具目录 | `83423ec` |
+
+## 2026-06-21
+
+| 时间 | 改动 / 功能 | commit |
+|------|-------------|--------|
+| 23:26 | 配色库中央面板再平衡：色块 44→64px、地图上限 600→480px | `d96c5b7` |
+| 23:26 | 审查修复：URL 状态解码加校验（type/cvd/fmt/n/cols 非法值回退）+ 导出加 default 分支 + 清理 lint（extract const / MapPreview 多余依赖）| `60b9e01` |
